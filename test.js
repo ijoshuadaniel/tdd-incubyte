@@ -21,4 +21,7 @@ describe("Testing String Calculator", () => {
     // expecting same result for any amount of numbers
     expect(add(generatedNumbers)).toEqual(sum);
   });
+  test("Adding new line should return the sum", () => {
+    expect(add("1,2,3\n4")).toBe(10);
+  });
 });
