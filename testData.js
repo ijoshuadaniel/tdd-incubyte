@@ -12,9 +12,8 @@ const generateRandomNumbers = (n) => {
 };
 
 const addAllNumbers = (number) => {
-  const arrayOfNumbers = number.split(",");
-  const sum = arrayOfNumbers.reduce((a, b) => Number(a) + Number(b));
-  return Number(sum);
+  const arrayOfNumbers = number.split(",").map((int) => Number(int));
+  return arrayOfNumbers.reduce((a, b) => a + b);
 };
 
 module.exports = {

@@ -3,10 +3,11 @@ const add = (numbers) => {
   if (numbers === "") {
     return 0;
   }
+
   // adding numbers
-  const allNumbers = numbers.split(",");
-  const addition = allNumbers.reduce((a, b) => Number(a) + Number(b));
-  return Number(addition);
+  const allNumbers = numbers.split(",").map((int) => Number(int));
+  const addition = allNumbers.reduce((a, b) => a + b);
+  return addition;
 };
 
 module.exports = add;
