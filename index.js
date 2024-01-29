@@ -4,10 +4,18 @@ const add = (numbers) => {
     return 0;
   }
 
-  // adding delimiters and creating regular experssion for it.
+  // adding delimiters.
   let delimiters = [",", "\n"];
-  const regex = new RegExp(`[${delimiters.join("")}]`);
 
+  // supporting custom delimeter
+  if (numbers.startsWith("//")) {
+    const customDelimiter = numbers.substring(2, numbers.indexOf("\n"));
+    delimiters = [customDelimiter];
+    numbers = numbers.substring(numbers.indexOf("\n") + 1);
+  }
+
+  // creating regex for delimeters
+  const regex = new RegExp(`[${delimiters.join("")}]`);
   // adding numbers
   const allNumbers = numbers.split(regex).map((int) => Number(int));
   const addition = allNumbers.reduce((a, b) => a + b);
@@ -16,5 +24,6 @@ const add = (numbers) => {
 
 console.log(add("1,2"));
 console.log(add("4\n2"));
+console.log(add("//;\n1;2;3;4"));
 
 module.exports = add;

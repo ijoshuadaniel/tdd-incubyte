@@ -24,4 +24,10 @@ describe("Testing String Calculator", () => {
   test("Adding new line should return the sum", () => {
     expect(add("1,2,3\n4")).toBe(10);
   });
+  test("Supporting Custom Delimeter and should return sum", () => {
+    // delimeter ;
+    expect(add("//;\n1;2;3;4;0")).toBe(10);
+    // delimeter |
+    expect(add("//|\n1|2|3|4|0")).toBe(10);
+  });
 });
