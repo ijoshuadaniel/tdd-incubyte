@@ -30,4 +30,9 @@ describe("Testing String Calculator", () => {
     // delimeter |
     expect(add("//|\n1|2|3|4|0")).toBe(10);
   });
+  test("Negatives are not allowed and should throw error", () => {
+    expect(() =>
+      add("1,2,3,4,5,-6").toThrowError("Negative numbers are not allowed. -6")
+    );
+  });
 });

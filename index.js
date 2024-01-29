@@ -6,6 +6,8 @@ const add = (numbers) => {
 
   // adding delimiters.
   let delimiters = [",", "\n"];
+  // negative numbers array
+  let negativeNumbers = [];
 
   // supporting custom delimeter
   if (numbers.startsWith("//")) {
@@ -17,13 +19,30 @@ const add = (numbers) => {
   // creating regex for delimeters
   const regex = new RegExp(`[${delimiters.join("")}]`);
   // adding numbers
-  const allNumbers = numbers.split(regex).map((int) => Number(int));
-  const addition = allNumbers.reduce((a, b) => a + b);
-  return addition;
+  const allNumbers = numbers.split(regex).map((int) => {
+    const parsedNumber = Number(int);
+    if (parsedNumber < 0) {
+      negativeNumbers.push(parsedNumber);
+    }
+    return parsedNumber;
+  });
+  if (negativeNumbers.length > 0) {
+    throw new Error(
+      "Negative numbers are not allowed." + negativeNumbers.join(" ,")
+    );
+  }
+  return allNumbers.reduce((a, b) => a + b);
 };
 
+console.log(add(""));
 console.log(add("1,2"));
 console.log(add("4\n2"));
 console.log(add("//;\n1;2;3;4"));
+
+try {
+  console.log(add("1,2,3,4,5,-6"));
+} catch (error) {
+  console.error(error.message);
+}
 
 module.exports = add;
