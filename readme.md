@@ -1,6 +1,6 @@
 <h1 align="center" id="title">Incubyte TDD Assessment</h1>
 
-<p id="description">Creating String Calculator and writing respective test cases</p>
+<p align="center" id="description">Creating String Calculator and writing respective test cases</p>
 
 <h2>Installation Steps:</h2>
 
@@ -22,11 +22,9 @@ npm start  ||  yarn start
 npm run test || yarn test
 ```
 
-  
-  
 <h2>Technologies</h2>
 
 Technologies used in the project:
 
-*   Node Js
-*   Jest
+- Node Js
+- Jest
