@@ -1,24 +1,24 @@
 const add = (numbers) => {
-  /// if numbers is empty or undefined returning 0
+  // If numbers is empty or undefined, return 0
   if (numbers === "") {
     return 0;
   }
 
-  // adding delimiters.
+  // Adding delimiters
   let delimiters = [",", "\n"];
-  // negative numbers array
+  // Negative numbers array
   let negativeNumbers = [];
 
-  // supporting custom delimeter
+  // Supporting custom delimiter
   if (numbers.startsWith("//")) {
     const customDelimiter = numbers.substring(2, numbers.indexOf("\n"));
     delimiters = [customDelimiter];
     numbers = numbers.substring(numbers.indexOf("\n") + 1);
   }
 
-  // creating regex for delimeters
+  // Creating regex for delimiters
   const regex = new RegExp(`[${delimiters.join("")}]`);
-  // adding numbers
+  // Adding numbers
   const allNumbers = numbers.split(regex).map((int) => {
     const parsedNumber = Number(int);
     if (parsedNumber < 0) {
@@ -26,11 +26,14 @@ const add = (numbers) => {
     }
     return parsedNumber;
   });
+
+  // If negative numbers are present, throw an error
   if (negativeNumbers.length > 0) {
     throw new Error(
-      "Negative numbers are not allowed." + negativeNumbers.join(" ,")
+      "Negative numbers are not allowed: " + negativeNumbers.join(", ")
     );
   }
+
   return allNumbers.reduce((a, b) => a + b);
 };
 
